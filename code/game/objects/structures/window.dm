@@ -700,10 +700,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 	icon_state = "rplasma_window-0"
 	base_icon_state = "rplasma_window"
 	state = RWINDOW_SECURE
-	max_integrity = 1000
+	max_integrity = 800
 	fulltile = TRUE
 	flags_1 = PREVENT_CLICK_UNDER_1
 	obj_flags = CAN_BE_HIT
+	heat_resistance = 1600
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_WINDOW_FULLTILE
 	canSmoothWith = SMOOTH_GROUP_WINDOW_FULLTILE
@@ -816,12 +817,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 	icon = 'icons/obj/smooth_structures/plastitanium_window.dmi'
 	icon_state = "plastitanium_window-0"
 	base_icon_state = "plastitanium_window"
-	max_integrity = 1200
+	max_integrity = 1000
 	wtype = "shuttle"
 	fulltile = TRUE
 	flags_1 = PREVENT_CLICK_UNDER_1
 	obj_flags = CAN_BE_HIT
-	heat_resistance = 1600
+	heat_resistance = 2000
 	armor_type = /datum/armor/plasma_plastitanium
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_SHUTTLE_PARTS + SMOOTH_GROUP_WINDOW_FULLTILE_PLASTITANIUM
@@ -834,7 +835,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 	glass_material_datum = /datum/material/alloy/plastitaniumglass
 
 /datum/armor/plasma_plastitanium
-	melee = 95
+	melee = 75 // it already has 1200 integrity, why would it need this much melee
 	bomb = 50
 	fire = 80
 	acid = 100
