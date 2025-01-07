@@ -598,3 +598,35 @@
 /obj/projectile/magic/shrink/wand/on_hit(atom/target, blocked = 0, pierce_hit)
 	shrink_time = rand(60 SECONDS, 90 SECONDS)
 	return ..()
+
+/obj/projectile/magic/nuclear
+	name = "\proper blazing manliness"
+	icon_state = "nuclear"
+	var/mob/living/victim = null
+
+/obj/projectile/magic/nuclear/on_hit(atom/target)
+	new/obj/effect/temp_visual/nuclear(get_turf(src))
+	if(ismob(target))
+		if(target == victim)
+			return
+		visible_message("<span class='danger'>[victim] slams into [target] with explosive force!</span>")
+		explosion(src, 2, 3, 4, 0, 6, 0)
+		qdel(src)
+		return
+	else
+		victim.take_overall_damage(30,30)
+		explosion(src, -1, -1, -1, 0, 3, 0)
+		qdel(src)
+		return //Autistically making it return and qdel because for some reason it was blowing up three times?
+
+/obj/projectile/magic/nuclear/Destroy()
+	for(var/atom/movable/AM in contents)
+		AM.forceMove(get_turf(src))
+	. = ..()
+
+/obj/effect/temp_visual/nuclear //where's a good place to put this boi
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "slugboom"
+	randomdir = FALSE
+	duration = 60
+	pixel_x = -48
